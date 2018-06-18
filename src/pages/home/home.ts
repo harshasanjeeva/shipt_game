@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { MagicBallProvider } from '../../providers/magic-ball/magic-ball'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -10,9 +10,10 @@ export class HomePage {
   squares = Array(9).fill(null);
   player = 'X';
   winner = null;
+  answer: any = "...";
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController,public magicBall: MagicBallProvider) {
+   
   }
 
   get gameStatusMessage(){
@@ -51,5 +52,10 @@ export class HomePage {
     this.player = 'X';
     this.winner = null;
   }
+//===========================testing========
+
+showAnswer() {
+  this.answer = this.magicBall.getRandomAnswer();
+}
 
 }
